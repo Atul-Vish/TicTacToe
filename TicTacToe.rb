@@ -5,6 +5,7 @@ module TicTacToe
 		def initialize(player_1_class, player_2_class)
 			@board = Array.new(10) # Ignore '0' for the sake of simplicity
 			@players = [player_1_class.new(self, "X"), player_2_class.new(self, "O")]
+			@current_player_id = 0
 		end
 
 		def print_board
@@ -20,6 +21,28 @@ module TicTacToe
 		# Return the free positions on the board, in the form of array
 		def free_positions
 			(1..9).select {|position| @board[position].nil?}
+		end
+
+		def current_player_id
+			@current_player_id
+		end
+
+		def opponent_player_id
+			1 - current_player_id
+		end
+
+		def current_player
+			@players[current_player_id]
+		end
+
+		def opponent_player
+			@players[opponent_player_id]
+		end
+
+		# Place player marker on the position he selected
+		# This is the method that establishes the relationship between Game and Player class
+		def place_player_marker(current_player)
+
 		end
 	end
 
