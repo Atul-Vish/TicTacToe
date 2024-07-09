@@ -41,8 +41,10 @@ module TicTacToe
 
 		# Place player marker on the position he selected
 		# This is the method that establishes the relationship between Game and Player class
-		def place_player_marker(current_player)
-
+		def place_player_marker(player)
+			position = player.select_position!
+			puts "#{player} choose #{player.marker} position #{position}"
+			@board[position] = current_player.marker
 		end
 	end
 
