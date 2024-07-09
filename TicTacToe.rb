@@ -39,6 +39,10 @@ module TicTacToe
 			@players[opponent_player_id]
 		end
 
+		def switch_players
+			@current_player = opponent_player_id
+		end
+
 		# Place player marker on the position he selected
 		# This is the method that establishes the relationship between Game and Player class
 		def place_player_marker(player)
