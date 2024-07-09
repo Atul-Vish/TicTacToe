@@ -1,5 +1,6 @@
 # We created this module to group related classes together
 module TicTacToe
+	LINES = [[1,2,3], [4,5,6], [7,8,9], [1,4,7], [2,5,8], [3,6,9], [1,5,9], [3,5,7]]
 	# It creates a new Game and contain two players and a board
 	class Game
 		def initialize(player_1_class, player_2_class)
@@ -49,6 +50,20 @@ module TicTacToe
 			position = player.select_position!
 			puts "#{player} choose #{player.marker} position #{position}"
 			@board[position] = current_player.marker
+		end
+
+		def player_has_won?(player) 
+			LINES.any? do |line|
+				line.all? {|position| @board[position] == player.marker}
+			end
+		end
+
+		# Keep playing until one Player has won the game or Board got filled
+		def play_game
+			loop do
+				if player_has_won?(current_player)
+					
+			end
 		end
 	end
 
