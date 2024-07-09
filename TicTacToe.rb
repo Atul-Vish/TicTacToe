@@ -58,12 +58,27 @@ module TicTacToe
 			end
 		end
 
+		def board_full?
+			free_positions.empty?
+		end
+
 		# Keep playing until one Player has won the game or Board got filled
 		def play_game
 			loop do
+				place_player_marker(current_player)
+
 				if player_has_won?(current_player)
-					
+					puts "#{current_player} has won!!"
+					print_board
+					return
+				elsif board_full?
+					puts "It's a draw!!"
+					print_board
+					return
+				end
 			end
+
+			switch_players
 		end
 	end
 
